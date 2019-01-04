@@ -1,0 +1,18 @@
+<h1>Add</h1>
+<div>
+<%= form_with model: @user, url: "/signup" do |f| %>
+  <%= f.label "name", "名前" %>
+  <%= f.text_field :user_name, id: :title_user_name %><br>
+  <%= f.label "email", "メールアドレス" %>
+  <%= f.email_field :email, id: :title_email %><br>
+  <%= f.label "password", "パスワード" %>
+  <%= f.password_field :password, id: :title_password %><br>
+  <%= f.label "password_confirmation", "パスワード(確認)" %>
+  <%= f.password_field :password_confirmation, id: :title_password_confirmation %><br>
+  <%= f.label "face_img", "顔画像" %>
+  <small>後日実装</small>
+  <br>
+  <%= f.submit "確認" %>
+<% end %>
+</div>
+<div>
