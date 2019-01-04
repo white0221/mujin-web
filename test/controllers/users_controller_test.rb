@@ -6,4 +6,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should post create" do
+    post user_create_path
+    assert_response :success
+  end
 end
