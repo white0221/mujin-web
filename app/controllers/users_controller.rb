@@ -15,6 +15,16 @@ class UsersController < ApplicationController
     end
   end
   
+  def list
+    @users = User.all
+  end
+
+  def update
+  end
+
+  def delete
+  end
+  
   private
     def user_params
       params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
