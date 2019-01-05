@@ -20,9 +20,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(1)
   end
 
   def delete
+    @user = User.find(1)
   end
   
   private
