@@ -28,10 +28,12 @@ class UsersController < ApplicationController
   end
   
   def upgrade
-    @user = User.find(params[:data])
-    @user.user_name = params[:user][:user_name]
-    @user.email = params[:user][:email]
-    if @user.save
+    user = User.find(params[:data])
+    p user
+    user.user_name = params[:user][:user_name]
+    user.email = params[:user][:email]
+    p user
+    if user.save(validate: false)
       #success
       p 'update ok'
     else
