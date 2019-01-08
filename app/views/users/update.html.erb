@@ -1,5 +1,6 @@
 <h1>Update User Info</h1>
-<%= form_with model:@user, url: '/' do |f| %>
+<%= form_with model:@user, url: '/user/update' do |f| %>
+  <%= hidden_field_tag :data, @user.id %>
   <%= f.label "name", "名前" %>
   <%= f.text_field :user_name, id: :title_user_name %><br>
   <%= f.label "email", "Email" %>

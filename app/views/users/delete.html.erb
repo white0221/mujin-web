@@ -3,4 +3,4 @@ Name: <%= @user.user_name %>
 <br>
 Email: <%= @user.email %>
 <br>
-<%= link_to 'Delete', '/' %>
+<%= link_to 'Delete', '/user/delete', method: :delete, data: @user.id, id: 555 %>

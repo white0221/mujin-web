@@ -27,8 +27,31 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def upgrade
+    @user = User.find(params[:data])
+    @user.user_name = params[:user][:user_name]
+    @user.email = params[:user][:email]
+    if @user.save
+      #success
+      p 'update ok'
+    else
+      #err
+      p 'update err'
+    end
+    redirect_to '/user/list'
+  end
+
+  def destroy
+    # User.find(params[:data]).destroy
+    redirect_to '/user/list'
+  end
+
   private
     def user_params
       params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+    end
+
+    def update_params
+      params.require(:user).permit(:user_name, :email)
     end
 end
