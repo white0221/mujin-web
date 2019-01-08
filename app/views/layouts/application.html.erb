@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <header>
+      <% if signed_in? %>
+        <%= link_to 'signout', '/signin', method: :delete %>
+      <% else %>
+        <%= link_to 'signin', '/signin' %>
+      <% end %>
+    </header>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
