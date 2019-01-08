@@ -29,10 +29,8 @@ class UsersController < ApplicationController
   
   def upgrade
     user = User.find(params[:data])
-    p user
     user.user_name = params[:user][:user_name]
     user.email = params[:user][:email]
-    p user
     if user.save(validate: false)
       #success
       p 'update ok'
@@ -40,11 +38,13 @@ class UsersController < ApplicationController
       #err
       p 'update err'
     end
+    flash[:notice] = "#{user.user_name}さんの情報を更新しました。"
     redirect_to '/user/list'
   end
 
   def destroy
-    # User.find(params[:data]).destroy
+    user = User.find(params[:user_id]).destroy
+    flash[:notice] = "#{user.user_name}さんを削除しました。"
     redirect_to '/user/list'
   end
 
