@@ -1,0 +1,6 @@
+<h1>User Delete</h1>
+Name: <%= @user.user_name %>
+<br>
+Email: <%= @user.email %>
+<br>
+<%= link_to 'Delete', user_delete_path(@user, params: {user_id: @user.id}), method: :delete %>
