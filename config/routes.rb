@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'items/list'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signin', to: 'sessions#destroy'
