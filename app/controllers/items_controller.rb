@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def list
+    @items = Item.all
   end
 
   def google_request
