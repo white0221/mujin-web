@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_084120) do
+ActiveRecord::Schema.define(version: 2019_01_10_085248) do
+
+  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.boolean "responce", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_histories_on_user_id"
+  end
 
   create_table "item_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
@@ -37,5 +45,6 @@ ActiveRecord::Schema.define(version: 2019_01_10_084120) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "histories", "users"
   add_foreign_key "item_stocks", "items"
 end
