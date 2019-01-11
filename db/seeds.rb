@@ -16,3 +16,20 @@ value = ['120', '680', '90', '80', '240']
     aruco_id: i
   )
 end
+
+puts "Add history Data"
+item = ['Coffee', 'Sweets']
+history = History.create(
+  user_id: 3,
+  responce: true
+)
+item.length.times do |i|
+  item = Item.find_by(item_name: item[i])
+  HistoryDetail.create(
+    history_id: history,
+    item_id: item,
+    volume: 1
+  )
+end
+
+puts "COMPLETE"
