@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_085248) do
+ActiveRecord::Schema.define(version: 2019_01_11_014335) do
 
   create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2019_01_10_085248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_histories_on_user_id"
+  end
+
+  create_table "history_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "history_id"
+    t.bigint "item_id"
+    t.integer "volume", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["history_id"], name: "index_history_details_on_history_id"
+    t.index ["item_id"], name: "index_history_details_on_item_id"
   end
 
   create_table "item_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,5 +56,7 @@ ActiveRecord::Schema.define(version: 2019_01_10_085248) do
   end
 
   add_foreign_key "histories", "users"
+  add_foreign_key "history_details", "histories"
+  add_foreign_key "history_details", "items"
   add_foreign_key "item_stocks", "items"
 end
