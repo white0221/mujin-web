@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Add Test Data"
+User.create(
+  user_name: "admin",
+  email: "admin@admin.com",
+  password: "admincom",
+  password_confirmation: "admincom",
+  admin_flag: true
+)
+
 name = ['Milk', 'Coffee', 'Pan', 'Potech','Sweets']
 value = ['120', '680', '90', '80', '240']
 5.times do |i|
