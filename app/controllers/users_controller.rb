@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_customer!, only: [:upgrade, :destroy, :signined]
 
   def new
     @user = User.new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
-  
+
   def list
     @users = User.all
   end
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   def delete
     @user = User.find(params[:id])
   end
-  
+
   def upgrade
     user = User.find(params[:data])
     user.user_name = params[:user][:user_name]
