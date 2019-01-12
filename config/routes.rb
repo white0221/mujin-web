@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/list', to: 'items#list'
+  get '/history', to: 'items#history'
+  get '/request', to: 'items#google_request'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signin', to: 'sessions#destroy'
@@ -10,9 +13,4 @@ Rails.application.routes.draw do
   get '/user/delete', to: 'users#delete'
   patch '/user/update', to: 'users#upgrade'
   delete '/user/delete', to: 'users#destroy'
-
-  get '/user/menu', to: 'users#menu'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  root 'sessions#new'
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #before_action :authenticate_customer!, only: [:upgrade, :destroy, :signined]
-  before_action :signed_in_user, only: [:list, :update, :delete, :menu]
-  before_action :admin_user, only: [:list, :update, :delete]
+  before_action :signed_in_user, only: [:create, :list, :update, :delete, :menu]
+  before_action :admin_user, only: [:create, :list, :update, :delete]
 
   def new
     @user = User.new

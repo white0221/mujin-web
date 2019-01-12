@@ -1,0 +1,9 @@
+<h1>List</h1>
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.item_name %></td>
+      <td>¥<%= item.value %></td>
+    </tr>
+  <% end %>
+</table>
