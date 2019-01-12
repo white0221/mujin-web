@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #before_action :authenticate_customer!, only: [:upgrade, :destroy, :signined]
-  before_action :signed_in_user, only: [:create, :list, :update, :delete, :menu]
-  before_action :admin_user, only: [:create, :list, :update, :delete]
+  before_action :signed_in_user
+  before_action :admin_user
 
   def new
     @user = User.new
@@ -49,9 +49,6 @@ class UsersController < ApplicationController
     user = User.find(params[:user_id]).destroy
     flash[:notice] = "#{user.user_name}さんを削除しました。"
     redirect_to '/user/list'
-  end
-
-  def menu
   end
 
   private
