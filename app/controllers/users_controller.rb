@@ -68,6 +68,6 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.admin_flag?
+      redirect_to('/list') unless current_user.admin_flag?
     end
 end
