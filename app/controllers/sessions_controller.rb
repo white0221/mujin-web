@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if signed_in?
-      redirect_to '/user/list'
+      redirect_to '/user/menu'
     end
   end
 

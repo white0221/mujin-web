@@ -1,11 +1,11 @@
 <h1>User List</h1>
 <table>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.user_name %></td>
-      <td><%= user.email %></td>
-      <td><%= link_to 'update', { :controller => :users, :action => :update, :id => user.id } %></td>
-      <td><%= link_to 'delete', { :controller => :users, :action => :delete, :id => user.id } %></td>
-    </tr>
-  <% end %>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.user_name %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'update', { :controller => :users, :action => :update, :id => user.id } %></td>
+    <td><%= link_to 'delete', { :controller => :users, :action => :delete, :id => user.id } %></td>
+  </tr>
+<% end %>
 </table>

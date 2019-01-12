@@ -1,16 +1,13 @@
 <h1>SignIn</h1>
 <div>
-<% if !(signed_in?) %>
-  <%= form_for(:session, url: '/signin') do |f| %>
-    <%= f.label "email", "メールアドレス" %>
-    <%= f.email_field :email, id: :title_email %><br>
-    <%= f.label "password", "パスワード" %>
-    <%= f.password_field :password, id: :title_password %><br>
-    <%= f.submit "Signin" %>
-  <% end %>
-  <p>
-  DevCode<br>
-
-  <%= link_to 'add user', '/signup' %>
+<%= form_for(:session, url: '/signin') do |f| %>
+  <%= f.label "email", "メールアドレス" %>
+  <%= f.email_field :email, id: :title_email %><br>
+  <%= f.label "password", "パスワード" %>
+  <%= f.password_field :password, id: :title_password %><br>
+  <%= f.submit "Signin" %>
 <% end %>
+<p>
+DevCode<br>
+<%= link_to 'add user', '/signup' %>
 </div>
