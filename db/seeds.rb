@@ -26,16 +26,17 @@ value = ['120', '680', '90', '80', '240']
 end
 
 puts "Add history Data"
-item = ['Coffee', 'Sweets']
+items = ['Coffee', 'Sweets']
+user =  User.find_by(user_name: "admin")
 history = History.create(
-  user_id: 3,
+  user_id: user.id,
   responce: true
 )
-item.length.times do |i|
-  item = Item.find_by(item_name: item[i])
-  HistoryDetail.create(
-    history_id: history,
-    item_id: item,
+items.length.times do |i|
+  item = Item.find_by(item_name: items[i])
+  h = HistoryDetail.create(
+    history_id: history.id,
+    item_id: item.id,
     volume: 1
   )
 end

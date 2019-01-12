@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   def history
+    @histories = History.all
+    render :json => @histories
   end
 
   def list
