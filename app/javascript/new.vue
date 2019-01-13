@@ -1,5 +1,5 @@
 <template>
-  <form accept-charset="UTF-8">
+  <form accept-charset="UTF-8" v-on:submit.prevent>
     <input type="text" v-model="username" placeholder="username">
     <input type="text" v-model="email" placeholder="email">
     <input type="password" v-model="password" placeholder="password">
@@ -35,7 +35,9 @@ export default {
           "password_confirmation": this.password_confirm,
         }
       })
-      .then(response => { 
+      .then(response => {
+        var turbolinksFunc = response["data"];
+        Function(turbolinksFunc)();
       })
       .catch(response => {
       });
