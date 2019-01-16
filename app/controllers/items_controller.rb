@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def new
-    @history = History.new
+    @history = Item.new
   end
 
   def create
