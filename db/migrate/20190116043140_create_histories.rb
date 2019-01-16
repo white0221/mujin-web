@@ -3,7 +3,6 @@ class CreateHistories < ActiveRecord::Migration[5.2]
     create_table :histories do |t|
       t.references :user, foreign_key: true
       t.integer :quantity
-      t.datetime :datetime
       t.boolean :response_flag
 
       t.timestamps
