@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   get '/item', to: 'items#read'
   get '/item/:id', to: 'items#read'
+  post '/item', to: 'items#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
