@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   get '/user/delete', to: 'users#delete'
   patch '/user/update', to: 'users#upgrade'
   delete '/user/delete', to: 'users#destroy'
+
+  get '/stock', to: 'stocks#read'
+  get '/stock/:id', to: 'stocks#read'
+  post '/stock', to: 'stocks#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
