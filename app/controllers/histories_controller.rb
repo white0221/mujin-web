@@ -5,10 +5,15 @@ class HistoriesController < ApplicationController
 
   def create
     @history = History.new(history_params)
+
+    response_json = {}
     if @history.save
-      render json: @history
+      response_json["history"] = @history
+
+      render json: response_json, status: :created
     else
-      render json: @history
+      response_json["error"] = "invalid parameters"
+      render json: response_json, status: :bad_request
     end
   end
 
