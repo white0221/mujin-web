@@ -4,4 +4,9 @@ class HistoriesController < ApplicationController
 
     render json: @histories
   end
+
+  private
+    def history_params
+      params.require(:history).permit(:user_id, :quantity, :response_flag)
+    end
 end
