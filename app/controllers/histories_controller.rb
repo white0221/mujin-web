@@ -22,4 +22,6 @@ class HistoriesController < ApplicationController
     def history_params
       params.require(:history).permit(:user_id, :quantity, :response_flag)
     end
+
+    protect_from_forgery :except => [:create]
 end
