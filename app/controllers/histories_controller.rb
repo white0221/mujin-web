@@ -1,4 +1,17 @@
 class HistoriesController < ApplicationController
+  def new
+    @history = History.new
+  end
+
+  def create
+    @history = History.new(history_params)
+    if @history.save
+      render json: @history
+    else
+      render json: @history
+    end
+  end
+
   def read
     @histories = History.all
 
