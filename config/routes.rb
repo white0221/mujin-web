@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   patch '/user/update', to: 'users#upgrade'
   delete '/user/delete', to: 'users#destroy'
 
-  get '/histories', to: 'histories#read'
-  post '/histories', to: 'histories#create'
+  get '/history', to: 'histories#read'
+  post '/history', to: 'histories#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
