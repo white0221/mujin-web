@@ -18,9 +18,14 @@ class HistoriesController < ApplicationController
   end
 
   def read
-    @histories = History.all
+    response_json = {}
+    if params[:id]
+      response_json["history"] = History.find(params[:id])
+    else
+      response_json["histories"] = History.all
+    end
 
-    render json: @histories
+    render json: response_json, status: :ok
   end
 
   private

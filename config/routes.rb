@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/user/delete', to: 'users#destroy'
 
   get '/history', to: 'histories#read'
+  get 'history/:id', to: 'histories#read'
   post '/history', to: 'histories#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
