@@ -9,4 +9,9 @@ class ItemsController < ApplicationController
 
     render json: response_json, status: :ok
   end
+
+  private
+    def item_params
+      params.require(:history).permit(:name, :value)
+    end
 end
