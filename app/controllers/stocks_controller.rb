@@ -1,6 +1,15 @@
+# coding: utf-8
 class StocksController < ApplicationController
   def new
     @stock = Stock.new
+  end
+
+  def list
+    @stocks = Stock.all
+  end
+
+  def update
+    @stock = Stock.find(params[:id])
   end
 
   def create
@@ -18,6 +27,24 @@ class StocksController < ApplicationController
   end
 
   def upgrade
+    if !params[:data]
+      flash[:danger] = "入力エラー"
+    end
+
+    stock = Stock.find(params[:data])
+    stock.item_id = params[:stock][:item_id]
+    stock.quantity = params[:stock][:quantity]
+
+    response_json = {}
+    if stock.save
+      flash[:success] = "在庫情報を更新しました"
+      redirect_to "/stock/list"
+    else
+      flash[:danger] = "入力エラー"
+    end
+  end
+
+  def upgrade_for_api
     if !params[:id]
       response_json["error"] = "invalid quantity update"
 
@@ -53,6 +80,10 @@ class StocksController < ApplicationController
   private
     def stock_params
       params.require(:stock).permit(:item_id, :quantity)
+    end
+
+    def stock_params_for_update
+      params.require(:stock).permit(:quantity)
     end
 
   protect_from_forgery :except => [:create]

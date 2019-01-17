@@ -1,0 +1,7 @@
+<h1>Update Stock Info</h1>
+<%= form_with model:@stock, url: '/stock/upgrade' do |f| %>
+    <%= hidden_field_tag :data, @stock.id %>
+    <%= f.label "quantity", "在庫数" %>
+    <%= f.number_field :quantity, id: :title_quantity %><br>
+    <%= f.submit "更新" %>
+<% end %>
