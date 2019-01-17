@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   get '/history', to: 'histories#read'
   get 'history/:id', to: 'histories#read'
   post '/history', to: 'histories#create'
+
+  get '/history/user/:id', to: 'histories#read_with_user_id'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

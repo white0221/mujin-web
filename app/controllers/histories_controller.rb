@@ -28,6 +28,19 @@ class HistoriesController < ApplicationController
     render json: response_json, status: :ok
   end
 
+  def read_with_user_id
+    response_json = {}
+    if params[:id]
+      response_json["histories"] = History.where(user_id: params[:id])
+
+      render json: response_json, status: :ok
+    else
+      response_json["error"] = "parameter don't have user_id"
+
+      render json: response_json, status: :bad_requrest
+    end
+  end
+
   private
     def history_params
       params.require(:history).permit(:user_id, :quantity, :response_flag)
