@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 class ItemsController < ApplicationController
 
@@ -54,13 +55,13 @@ class ItemsController < ApplicationController
       p 'update err'
     end
     flash[:notice] = "#{item.name}の情報を更新しました。"
-    redirect_to '/item_list'
+    redirect_to '/item/list'
   end
 
   def destroy
     item = Item.find(params[:item_id]).destroy
     flash[:notice] = "#{item.name}を削除しました。"
-    redirect_to '/item_list'
+    redirect_to '/item/list'
   end
 
   private
