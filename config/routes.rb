@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   get '/item', to: 'items#read'
   post '/item', to: 'items#create'
-  get '/item_list', to: 'items#list'
-  get '/item_update', to: 'items#update'
-  get '/item_delete', to: 'items#delete'
-  patch '/item_update', to: 'items#upgrade'
-  delete '/item_delete', to: 'items#destroy'
+  get '/item/list', to: 'items#list'
+  get '/item/update', to: 'items#update'
+  get '/item/delete', to: 'items#delete'
+  patch '/item/update', to: 'items#upgrade'
+  delete '/item/delete', to: 'items#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

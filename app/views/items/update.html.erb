@@ -1,5 +1,5 @@
 <h1>Update Item Info</h1>
-<%= form_with model:@item, url: '/item_update' do |f| %>
+<%= form_with model:@item, url: '/item/update' do |f| %>
   <%= hidden_field_tag :data, @item.id %>
   <%= f.label "name", "名前" %>
   <%= f.text_field :name, id: :title_item_name %><br>
