@@ -1,0 +1,11 @@
+<h1>Item List</h1>
+<table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.value %></td>
+      <td><%= link_to 'update', { :controller => :items, :action => :update, :id => item.id } %></td>
+      <td><%= link_to 'delete', { :controller => :items, :action => :delete, :id => item.id } %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,12 @@
+<h1>Add</h1>
+<div>
+<%= form_with model: @user, url: "/signup" do |f| %>
+  <%= f.label "name", "名前" %>
+  <%= f.text_field :name, id: :title_item_name %><br>
+  <%= f.label "email", "在庫数" %>
+  <%= f.number_field :value, id: :title_value %><br>
+  <br>
+  <%= f.submit "確認" %>
+<% end %>
+</div>
+<div>

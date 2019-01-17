@@ -1,0 +1,9 @@
+<h1>Update Item Info</h1>
+<%= form_with model:@item, url: '/item_list' do |f| %>
+  <%= hidden_field_tag :data, @item.id %>
+  <%= f.label "name", "名前" %>
+  <%= f.text_field :name, id: :title_item_name %><br>
+  <%= f.label "value", "値段" %>
+  <%= f.number_field :value, id: :title_value %><br>
+  <%= f.submit "更新" %>
+<% end %>
