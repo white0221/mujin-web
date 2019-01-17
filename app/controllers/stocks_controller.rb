@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
   def new
-    @history = Stock.new
+    @stock = Stock.new
   end
 
   def create
