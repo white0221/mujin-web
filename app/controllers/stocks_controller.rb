@@ -46,7 +46,7 @@ class StocksController < ApplicationController
 
   private
   def stock_params
-    params.require(:stock).permit(:quantity)
+    params.require(:stock).permit(:item_id, :quantity)
   end
 
   protect_from_forgery :except => [:create]
