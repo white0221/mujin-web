@@ -17,6 +17,22 @@ class StocksController < ApplicationController
     end
   end
 
+  def upgrade
+    stock = Stock.find(params[:id])
+    stock.quantity = params[:stock][:quantity]
+
+    response_json = {}
+    if stock.save
+      response_json["stock"] = stock
+
+      render json: response_json, status: :accepted
+    else
+      response_json["error"] = "invalid quantity update"
+
+      render json: response_json, status: :bad_request
+    end
+  end
+
   def read
     response_json = {}
     if params[:id]
