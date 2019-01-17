@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   def add
     @item = Item.new(item_params)
 
+    # itemかstockのどちらかのsaveがこけたらロールバック
     Item.transaction do
       @item.save
 
