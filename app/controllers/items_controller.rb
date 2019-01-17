@@ -23,12 +23,24 @@ class ItemsController < ApplicationController
 
   def add
     @item = Item.new(item_params)
-    if @item.save
+
+    Item.transaction do
+      @item.save
+
+      created_item_id = @item["id"]
+      stock_init_params = {
+        "item_id": created_item_id,
+                           "quantity": 0
+      }
+      @stock = Stock.new(stock_init_params)
+      @stock.save
+
       flash[:success] = "商品を登録しました。"
-    else
-      flash[:danger] = "商品が登録できませんでした。"
+      redirect_to '/item/list'
     end
-    redirect_to '/item/list'
+    rescue => e
+      flash[:danger] = "商品が登録できませんでした。"
+      redirect_to '/item/add'
   end
 
   def read
