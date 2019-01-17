@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   delete '/user/delete', to: 'users#destroy'
 
   get '/item', to: 'items#read'
-  get '/item/:id', to: 'items#read'
   post '/item', to: 'items#create'
   get '/item_list', to: 'items#list'
   get '/item_update', to: 'items#update'
