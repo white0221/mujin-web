@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/stock', to: 'stocks#read'
   get '/stock/:id', to: 'stocks#read'
   post '/stock', to: 'stocks#create'
+  post '/stock/:id', to: 'stocks#upgrade'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
