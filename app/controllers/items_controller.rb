@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:user_id]).destroy
+    item = Item.find(params[:item_id]).destroy
     flash[:notice] = "#{item.name}を削除しました。"
     redirect_to '/item_list'
   end

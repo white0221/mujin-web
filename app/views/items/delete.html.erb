@@ -1,6 +1,6 @@
 <h1>Item Delete</h1>
-Name: <%= @item.item_name %>
+Name: <%= @item.name %>
 <br>
 Value: <%= @item.value %>
 <br>
-<%= link_to 'Delete', item_delete_path(@user, params: {item_id: @item.id}), method: :delete %>
+<%= link_to 'Delete', item_delete_path(@item, params: {item_id: @item.id}), method: :delete %>
