@@ -1,0 +1,11 @@
+<h1>Add</h1>
+<div>
+<%= form_with model: @item, url: "/item/add" do |f| %>
+  <%= f.label "name", "名前" %>
+  <%= f.text_field :name, id: :title_item_name %><br>
+  <%= f.label "value", "値段" %>
+  <%= f.number_field :value, id: :title_value %><br>
+  <br>
+  <%= f.submit "確認" %>
+<% end %>
+</div>
