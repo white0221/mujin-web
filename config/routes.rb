@@ -11,9 +11,8 @@ Rails.application.routes.draw do
   delete '/user/delete', to: 'users#destroy'
 
   get '/stock', to: 'stocks#read'
-  get '/stock/:id', to: 'stocks#read'
   post '/stock', to: 'stocks#create'
-  post '/stock/:id', to: 'stocks#upgrade'
+  post '/stock', to: 'stocks#upgrade'
 
   get '/item', to: 'items#read'
   post '/item', to: 'items#create'
