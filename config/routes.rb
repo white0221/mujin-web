@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/item', to: 'items#read'
   post '/item', to: 'items#create'
   get '/item/list', to: 'items#list'
+  get '/item/add', to: 'items#new'
+  post '/item/add', to: 'items#add'
   get '/item/update', to: 'items#update'
   get '/item/delete', to: 'items#delete'
   patch '/item/update', to: 'items#upgrade'

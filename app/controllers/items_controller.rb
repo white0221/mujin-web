@@ -3,7 +3,7 @@
 class ItemsController < ApplicationController
 
   def new
-    @history = Item.new
+    @item = Item.new
   end
 
   def create
@@ -18,6 +18,17 @@ class ItemsController < ApplicationController
       response_json["error"] = "invalid parameters"
       render json: response_json, status: :bad_request
     end
+    redirect_to '/item/list'
+  end
+
+  def add
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:success] = "商品を登録しました。"
+    else
+      flash[:danger] = "商品が登録できませんでした。"
+    end
+    redirect_to '/item/list'
   end
 
   def read
