@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def history
-    @histories = History.all
-    render :json => @histories
+    @detail =  HistoryDetail.joins(:history :item)
   end
 
   def list
