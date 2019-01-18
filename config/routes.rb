@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   get '/item/delete', to: 'items#delete'
   patch '/item/update', to: 'items#upgrade'
   delete '/item/delete', to: 'items#destroy'
+
+  get '/marker/add', to: 'markers#new'
+  post '/marker/add', to: 'markers#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
