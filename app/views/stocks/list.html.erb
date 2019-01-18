@@ -1,0 +1,11 @@
+<h1>Stock List</h1>
+<table>
+    <% @stocks.each do |stock| %>
+        <tr>
+            <td><%= stock.id %></td>
+            <td><%= stock.item_id %></td>
+            <td><%= stock.quantity %></td>
+            <td><%= link_to 'update', { :controller => :stocks, :action => :update, :id => stock.id } %></td>
+        </tr>
+    <% end %>
+</table>
