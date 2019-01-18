@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   patch '/user/update', to: 'users#upgrade'
   delete '/user/delete', to: 'users#destroy'
 
+  get '/stock', to: 'stocks#read'
+  get '/stock/list', to: 'stocks#list'
+  get '/stock/update', to: 'stocks#update'
+  post '/stock', to: 'stocks#create'
+  patch '/stock', to: 'stocks#upgrade_for_api'
+  patch '/stock/upgrade', to: 'stocks#upgrade'
+
   get '/item', to: 'items#read'
   post '/item', to: 'items#create'
   get '/item/list', to: 'items#list'

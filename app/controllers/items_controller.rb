@@ -23,12 +23,25 @@ class ItemsController < ApplicationController
 
   def add
     @item = Item.new(item_params)
-    if @item.save
+
+    # itemかstockのどちらかのsaveがこけたらロールバック
+    Item.transaction do
+      @item.save
+
+      created_item_id = @item["id"]
+      stock_init_params = {
+        "item_id": created_item_id,
+                           "quantity": 0
+      }
+      @stock = Stock.new(stock_init_params)
+      @stock.save
+
       flash[:success] = "商品を登録しました。"
-    else
-      flash[:danger] = "商品が登録できませんでした。"
+      redirect_to '/item/list'
     end
-    redirect_to '/item/list'
+    rescue => e
+      flash[:danger] = "商品が登録できませんでした。"
+      redirect_to '/item/add'
   end
 
   def read
@@ -70,8 +83,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:item_id]).destroy
-    flash[:notice] = "#{item.name}を削除しました。"
+    destroy_item_id = params[:item_id]
+    @item = Item.find(destroy_item_id)
+    @stock = Stock.find_by(item_id: destroy_item_id)
+
+    # stockかitemの削除がこけたらロールバック
+    Item.transaction do
+      @stock.destroy
+      @item.destroy
+    end
+    flash[:notice] = "#{@item.name}を削除しました。"
     redirect_to '/item/list'
   end
 
