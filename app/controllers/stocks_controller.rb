@@ -29,6 +29,7 @@ class StocksController < ApplicationController
   def upgrade
     if !params[:data]
       flash[:danger] = "入力エラー"
+      redirect_to "/stock/update"
     end
 
     stock = Stock.find(params[:data])
@@ -41,6 +42,7 @@ class StocksController < ApplicationController
       redirect_to "/stock/list"
     else
       flash[:danger] = "入力エラー"
+      redirect_to "/stock/update"
     end
   end
 
