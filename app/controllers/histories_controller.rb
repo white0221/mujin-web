@@ -32,7 +32,6 @@ class HistoriesController < ApplicationController
     response_json = {}
     if params[:id]
       response_json["histories"] = History.where(user_id: params[:id])
-
       render json: response_json, status: :ok
     else
       response_json["error"] = "parameter don't have user_id"

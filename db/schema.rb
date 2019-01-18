@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_01_16_094012) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "value", null: false
+    t.string "name"
+    t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,5 +45,6 @@ ActiveRecord::Schema.define(version: 2019_01_16_094012) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "histories", "users"
   add_foreign_key "stocks", "items"
 end
