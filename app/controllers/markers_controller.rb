@@ -13,6 +13,10 @@ class MarkersController < ApplicationController
     end
   end
 
+  def list
+    @markers = Marker.all
+  end
+
   private
   def marker_params
     params.require(:marker).permit(:url)

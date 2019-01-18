@@ -1,3 +1,10 @@
 <h1>Markers list</h1>
 
-<img src="">
+<% @markers.each do |marker| %>
+    <p>
+        <div>
+            <%= image_tag marker.url %>
+            <%= marker.id %>
+        </div>
+    </p>
+<% end %>
