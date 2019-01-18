@@ -83,8 +83,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:item_id]).destroy
-    flash[:notice] = "#{item.name}を削除しました。"
+    destroy_item_id = params[:item_id]
+    @item = Item.find(destroy_item_id)
+    @stock = Stock.find_by(item_id: destroy_item_id)
+
+    # stockかitemの削除がこけたらロールバック
+    Item.transaction do
+      @stock.destroy
+      @item.destroy
+    end
+    flash[:notice] = "#{@item.name}を削除しました。"
     redirect_to '/item/list'
   end
 
