@@ -30,8 +30,8 @@ class HistoriesController < ApplicationController
 
   def read_with_user_id
     response_json = {}
-    if params[:id]
-      response_json["histories"] = History.where(user_id: params[:id])
+    if params[:user_id]
+      response_json["histories"] = History.where(user_id: params[:user_id])
       render json: response_json, status: :ok
     else
       response_json["error"] = "parameter don't have user_id"
