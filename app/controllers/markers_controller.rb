@@ -14,7 +14,24 @@ class MarkersController < ApplicationController
   end
 
   def list
-    @markers = Marker.all
+    # idsパラメータがある場合,idsの指定するidをもつマーカのみを返す
+    # idの重複があった場合、重複を許す
+    if params[:ids]
+      ids =  JSON.parse(params[:ids])
+      all_markers = Marker.all
+
+      # idによる絞り込みを行う
+      # whereを利用すると重複が許されないため
+      # 繰り返して@markersを生成する
+      @markers = []
+      ids.each do | id |
+        if all_markers[id-1]
+          @markers.push(all_markers[id-1])
+        end
+      end
+    else
+      @markers = Marker.all
+    end
   end
 
   private
