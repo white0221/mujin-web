@@ -27,4 +27,5 @@ Rails.application.routes.draw do
   patch '/item/update', to: 'items#upgrade'
   delete '/item/delete', to: 'items#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	get '/tablet/user/list', to: 'users#tablet'
 end

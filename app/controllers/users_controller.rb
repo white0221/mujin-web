@@ -18,6 +18,13 @@ class UsersController < ApplicationController
   def list
     @users = User.all
   end
+	
+	def tablet
+		response_json = {}
+		users = User.all
+		response_json["user"] = users
+		render json: response_json, status: :accepted
+	end
 
   def update
     @user = User.find(params[:id])
