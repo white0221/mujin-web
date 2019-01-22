@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    user_image = user_params[1]["face_image_file"].tempfile.path
+    @user = User.new(user_params[0])
     if @user.save
       flash[:success] = "ユーザを登録しました。"
       redirect_to '/'
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+      [params.require(:user).permit(:user_name, :email, :password, :password_confirmation), params.require(:fileupload).permit(:face_image_file)]
     end
 
     def update_params
