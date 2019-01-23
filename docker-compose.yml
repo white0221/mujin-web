@@ -20,8 +20,7 @@ services:
       - .:/mujin
     ports:
       - "3000:3000"
-    environment:
-      - AWS_ACCESS_KEY=
-      - AWS_ACCESS_SECRET=
+    env_file:
+      - aws.env
     depends_on:
       - db
