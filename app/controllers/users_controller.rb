@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       redirect_to '/signup'
     end
   end
-  
+
   def list
     @users = User.all
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def delete
     @user = User.find(params[:id])
   end
-  
+
   def upgrade
     user = User.find(params[:data])
     user.user_name = params[:user][:user_name]

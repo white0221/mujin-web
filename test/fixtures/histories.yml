@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  item_id: 1
+  user_id: 1
+  quantity: 1
+  date: 2019-01-16 04:31:40
+  response_flag: false
+
+two:
+  id: 1
+  item_id: 1
+  user_id: 1
+  quantity: 1
+  date: 2019-01-16 04:31:40
+  response_flag: false
