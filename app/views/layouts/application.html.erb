@@ -11,10 +11,11 @@
 
   <body>
     <header>
+      <%= link_to image_tag('mujin_kuro.png', class: "home_img"), '/' %>
       <% if signed_in? %>
-        <%= link_to 'signout', '/signin', method: :delete %>
+        <%= link_to 'signout', '/signin', method: :delete , class: "square_btn" %>
       <% else %>
-        <%= link_to 'signin', '/signin' %>
+        <%= link_to 'signin', '/signin' , class: "square_btn" %>
       <% end %>
     </header>
     <% flash.each do |message_type, message| %>

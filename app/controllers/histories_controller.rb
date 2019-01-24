@@ -9,7 +9,6 @@ class HistoriesController < ApplicationController
     response_json = {}
     if @history.save
       response_json["history"] = @history
-
       render json: response_json, status: :created
     else
       response_json["error"] = "invalid parameters"
