@@ -1,4 +1,5 @@
 class HistoryDetailsController < ApplicationController
+  before_action :signed_in_user
   def new
     @history_details = HistoryDetail.new
   end

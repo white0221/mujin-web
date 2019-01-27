@@ -18,6 +18,27 @@
         <%= link_to 'signin', '/signin' , class: "square_btn" %>
       <% end %>
     </header>
+
+    <div class="cp_navi">
+    <ul>
+    	<li>
+    		<a href="#">Item<span class="caret"></span></a>
+    		<div>
+    			<ul>
+    				<li><a href='/item/list'>list</a></li>
+    				<li><a href='/stock/list'>Stock</a></li>
+    			</ul>
+    		</div>
+    	</li>
+    	<li><a href='/history'>History</a></li>
+      <% if signed_in? %>
+        <% if current_user.admin_flag? %>
+          <li><a href='/user/list'>User</a></li>
+        <% end %>
+      <% end %>
+    </ul>
+    </div>
+
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>

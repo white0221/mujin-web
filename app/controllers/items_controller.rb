@@ -1,7 +1,7 @@
 # coding: utf-8
 #
 class ItemsController < ApplicationController
-
+  before_action :signed_in_user
   def new
     @item = Item.new
   end

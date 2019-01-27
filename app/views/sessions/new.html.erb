@@ -1,4 +1,4 @@
-<h1>SignIn</h1>
+<h1>Sign In</h1>
 <div>
 <%= form_for(:session, url: '/signin') do |f| %>
   <%= f.label "email", "メールアドレス" %>
@@ -8,6 +8,5 @@
   <%= f.submit "Signin" %>
 <% end %>
 <p>
-DevCode<br>
-<%= link_to 'add user', '/signup' %>
+<%= link_to 'Add user', '/signup' %>
 </div>
