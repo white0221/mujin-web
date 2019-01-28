@@ -1,0 +1,155 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+h1 {
+   border-bottom: solid 3px #cce4ff;
+   position: relative;
+}
+
+h1:after {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 3px #5472cd;
+  bottom: -3px;
+  width: 20%;
+}
+
+table {
+    border-collapse:  collapse; /* セルの線を重ねる */
+}
+
+tr:nth-child(odd) {
+    background-color:  #ddd;    /* 背景色指定 */
+}
+
+th{
+  border: solid 1px white;
+  color:#fff;
+  background:#005ab3;
+}
+
+td {
+  border: solid 1px white;
+  padding: 5px 10px;          /* 余白指定 */
+  overflow: hidden; /* データが幅を超えたとき非表示に */
+  white-space: nowrap;
+}
+
+.home_img {
+  position:absolute; top:0%; right:0%;
+  width: 20%;
+  height: auto;
+}
+
+.square_btn{
+  font-size: 18px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #005ab3;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.square_btn:hover {
+    background: #005ab3;
+    color: white;
+}
+
+.cp_navi {
+	background-color: #ffffff;
+	border: 1px solid #dedede;
+	border-radius: 4px;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+	color: #888888;
+	display: block;
+	margin: 1em 1%;
+	overflow: hidden;
+	width: 100%;
+}
+.cp_navi ul {
+	margin: 0;
+	padding: 0;
+}
+.cp_navi ul li {
+	display: inline-block;
+	list-style-type: none;
+	-webkit-transition: all 0.2s;
+	        transition: all 0.2s;
+}
+.cp_navi > ul > li > a > .caret {
+	border-top: 4px solid #aaaaaa;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	content: '';
+	display: inline-block;
+	height: 0;
+	width: 0;
+	vertical-align: middle;
+	-webkit-transition: color 0.1s linear;
+	        transition: color 0.1s linear;
+}
+.cp_navi > ul > li > a {
+	color: #aaaaaa;
+	display: block;
+	line-height: 56px;
+	padding: 0 10px;
+	text-decoration: none;
+}
+.cp_navi > ul > li:hover {
+	background-color: rgb(218, 60, 65);
+}
+.cp_navi > ul > li:hover > a {
+	color: rgb( 255, 255, 255 );
+}
+.cp_navi > ul > li:hover > a > .caret {
+	border-top-color: rgb( 255, 255, 255 );
+}
+.cp_navi > ul > li > div {
+	background-color: rgb(218, 60, 65);
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+	display: none;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+  z-index: 1000;
+	width: 165px;
+	visibility: hidden;
+	-webkit-transiton: opacity 0.2s;
+	       transition: opacity 0.2s;
+}
+.cp_navi > ul > li:hover > div {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+.cp_navi > ul > li > div ul > li {
+	display: block;
+}
+.cp_navi > ul > li > div ul > li > a {
+	color: #ffffff;
+	display: block;
+	padding: 12px 24px;
+	text-decoration: none;
+}
+.cp_navi > ul > li > div ul > li:hover > a {
+	background-color: rgba( 255, 255, 255, 0.1);
+}

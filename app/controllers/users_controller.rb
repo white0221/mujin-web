@@ -7,7 +7,8 @@ Aws.config.update({
                   })
 
 class UsersController < ApplicationController
-
+  before_action :signed_in_user
+  before_action :admin_user
   def new
     @user = User.new
   end
@@ -19,9 +20,8 @@ class UsersController < ApplicationController
     success = false
     User.transaction do
       @user.save
-
       s3 = Aws::S3::Resource.new(region: ENV["AWS_REGION"])
-      obj = s3.bucket(ENV["AWS_S3_BUCKET"]).object('RegistImage/'+user_params[0][:user_name]+'.png')
+      obj = s3.bucket(ENV["AWS_S3_BUCKET"]).object('RegistImage/'+@user.id.to_s+'_'+user_params[0][:user_name]+'.png')
       obj.upload_file(user_image_path)
 
       success = true
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def list
     @users = User.all
   end
-	
+
 	def tablet
 		response_json = {}
 		users = User.all

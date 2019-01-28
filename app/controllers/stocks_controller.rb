@@ -1,5 +1,6 @@
 # coding: utf-8
 class StocksController < ApplicationController
+  before_action :signed_in_user
   def new
     @stock = Stock.new
   end

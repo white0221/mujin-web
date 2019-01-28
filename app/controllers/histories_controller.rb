@@ -1,4 +1,5 @@
 class HistoriesController < ApplicationController
+  before_action :signed_in_user
   def new
     @history = History.new
   end
@@ -6,13 +7,30 @@ class HistoriesController < ApplicationController
   def create
     @history = History.new(history_params)
 
+    history_details = []
     response_json = {}
-    if @history.save
-      response_json["history"] = @history
+    success = false
+    History.transaction do
+      @history.save
+      created_history_id = @history.id
 
+      history_details_params["history_details"].each do | history_detail_params |
+        history_detail_params["history_id"] = created_history_id
+        @history_detail = HistoryDetail.new(history_detail_params)
+        @history_detail.save
+        history_details.push(@history_detail)
+      end
+      response_json["history"] = @history
+      response_json["history_detail"] = history_details
+
+      success = true
+    end
+
+    if success
       render json: response_json, status: :created
     else
       response_json["error"] = "invalid parameters"
+
       render json: response_json, status: :bad_request
     end
   end
@@ -40,9 +58,17 @@ class HistoriesController < ApplicationController
     end
   end
 
+  def list
+    @histories = History.where(user_id: current_user.id)
+  end
+
   private
     def history_params
-      params.require(:history).permit(:user_id, :quantity, :response_flag)
+      params.require(:history).permit(:user_id, :response_flag)
+    end
+
+    def history_details_params
+      params.require(:history).permit(history_details: [:item_id, :quantity])
     end
 
     protect_from_forgery :except => [:create]
