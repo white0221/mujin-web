@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use aws for uploading image
 gem 'aws-sdk'
 
+gem 'rack-cors', require: 'rack/cors
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
