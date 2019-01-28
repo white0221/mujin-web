@@ -7,8 +7,8 @@ Aws.config.update({
                   })
 
 class UsersController < ApplicationController
-  before_action :signed_in_user
-  before_action :admin_user
+  before_action :signed_in_user, only: [:list]
+  before_action :admin_user, only: [:update, :delete, :upgrade, :destroy]
   def new
     @user = User.new
   end
