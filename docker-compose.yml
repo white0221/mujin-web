@@ -20,5 +20,7 @@ services:
       - .:/mujin
     ports:
       - "3000:3000"
+    env_file:
+      - aws.env
     depends_on:
       - db

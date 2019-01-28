@@ -1,3 +1,11 @@
+# coding: utf-8
+
+require 'aws-sdk'
+
+Aws.config.update({
+                    credentials: Aws::Credentials.new(ENV["AWS_ACCESS_KEY"], ENV["AWS_ACCESS_SECRET"])
+                  })
+
 class UsersController < ApplicationController
 
   def new
@@ -5,8 +13,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    user_image_path = user_params[1]["face_image_file"].tempfile.path
+    @user = User.new(user_params[0])
+
+    success = false
+    User.transaction do
+      @user.save
+
+      s3 = Aws::S3::Resource.new(region: ENV["AWS_REGION"])
+      obj = s3.bucket(ENV["AWS_S3_BUCKET"]).object('RegistImage/'+user_params[0][:user_name]+'.png')
+      obj.upload_file(user_image_path)
+
+      success = true
+    end
+
+    if success
       flash[:success] = "ユーザを登録しました。"
       redirect_to '/'
     else
@@ -57,7 +78,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
+      [params.require(:user).permit(:user_name, :email, :password, :password_confirmation), params.require(:fileupload).permit(:face_image_file)]
     end
 
     def update_params
