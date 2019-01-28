@@ -29,6 +29,10 @@ class HistoryDetailsController < ApplicationController
     render json: response_json, status: :ok
   end
 
+  def list
+    @history_details = HistoryDetail.where(history_id: params[:history_id])
+  end
+
   private
     def history_params
       params.require(:history_detail).permit(:history_id, :item_id, :quantity)

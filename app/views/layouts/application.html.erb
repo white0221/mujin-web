@@ -18,7 +18,7 @@
         <%= link_to 'signin', '/signin' , class: "square_btn" %>
       <% end %>
     </header>
-
+    <% if signed_in? %>
     <div class="cp_navi">
     <ul>
     	<li>
@@ -30,13 +30,14 @@
     			</ul>
     		</div>
     	</li>
-    	<li><a href='/history'>History</a></li>
-      <% if signed_in? %>
-        <% if current_user.admin_flag? %>
-          <li><a href='/user/list'>User</a></li>
-        <% end %>
+    	<li>
+        <%= link_to 'History', history_list_path %>
+      </li>
+      <% if current_user.admin_flag? %>
+        <li><a href='/user/list'>User</a></li>
       <% end %>
     </ul>
+    <% end %>
     </div>
 
     <% flash.each do |message_type, message| %>

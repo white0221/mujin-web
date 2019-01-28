@@ -1,4 +1,7 @@
 <h1>Item List</h1>
+<% if current_user.admin_flag? %>
+  <%= link_to 'Add item', '/item/add' %>
+<% end %>
 <table>
   <tr>
     <th>Name</th>

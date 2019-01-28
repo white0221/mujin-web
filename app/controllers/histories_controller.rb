@@ -58,6 +58,10 @@ class HistoriesController < ApplicationController
     end
   end
 
+  def list
+    @histories = History.where(user_id: current_user.id)
+  end
+
   private
     def history_params
       params.require(:history).permit(:user_id, :response_flag)
