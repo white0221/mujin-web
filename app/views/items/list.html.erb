@@ -16,11 +16,13 @@
   </tr>
   <% @items.each do |item| %>
     <tr>
+      <% if current_user.admin_flag? %>
       <td style="width:100px;">
         <div style="width:100px; overflow-x:scroll;">
           <%= item.id %>
         </div>
       </td>
+      <% end %>
       <td style="width:200px;">
         <div style="width:200px; overflow-x:scroll;">
           <%= item.name %>
