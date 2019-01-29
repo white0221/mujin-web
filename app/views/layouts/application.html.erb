@@ -23,15 +23,16 @@
     <ul>
     	<li>
     		<a href="#">Item<span class="caret"></span></a>
-  			<ul>
-  				<li><a href='/item/list'>list</a></li>
-  				<li><a href='/stock/list'>Stock</a></li>
-          <li><a href='https://docs.google.com/forms/d/e/1FAIpQLSdW0Heg5j3vbEhPQiqb7sCdt_B6NRInohtMEjkh46YEl3m0cw/viewform?usp=sf_link'>Request</li>
-  			</ul>
+    		<div>
+    			<ul>
+    				<li><a href='/item/list'>list</a></li>
+    				<li><a href='/stock/list'>Stock</a></li>
+            <li><a href='https://docs.google.com/forms/d/e/1FAIpQLSdW0Heg5j3vbEhPQiqb7sCdt_B6NRInohtMEjkh46YEl3m0cw/viewform?usp=sf_link'>Request</li>
+    			</ul>
+    		</div>
     	</li>
-    	<li>
-        <%= link_to 'History', history_list_path %>
-      </li>
+    	<li><a href='/history/list'>History</a>
+    </li>
       <% if current_user.admin_flag? %>
         <li><a href='/user/list'>User</a></li>
         <li><a href='/marker/list'>Marker</a></li>
