@@ -1,9 +1,15 @@
 <h1>Stock List</h1>
 <table>
+    <tr>
+      <th>Item Name</th>
+      <th>Quantity</th>
+      <% if current_user.admin_flag? %>
+      <th></th>
+      <% end %>
+    </tr>
     <% @stocks.each do |stock| %>
         <tr>
-            <td><%= stock.id %></td>
-            <td><%= stock.item_id %></td>
+            <td><%= Item.find(stock.item_id)[:name] %></td>
             <td><%= stock.quantity %></td>
             <td><%= link_to 'update', { :controller => :stocks, :action => :update, :id => stock.id } %></td>
         </tr>

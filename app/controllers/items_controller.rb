@@ -1,6 +1,8 @@
 # coding: utf-8
 #
 class ItemsController < ApplicationController
+  before_action :signed_in_user, only: [:list, :add]
+  before_action :admin_user, only: [:add, :delete, :update, :upgrade, :destroy]
 
   def new
     @item = Item.new

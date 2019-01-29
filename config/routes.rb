@@ -32,9 +32,14 @@ Rails.application.routes.draw do
   post '/marker/add', to: 'markers#create'
   
   get '/history', to: 'histories#read'
+  get '/history/list', to: 'histories#list'
   post '/history', to: 'histories#create'
-  get '/history/user', to: 'histories#read_with_user_id'
 
+  get '/history_detail', to: 'history_details#read'
+  get '/history_detail/list', to: 'history_details#list'
+  post '/history_detail', to: 'history_details#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	get '/tablet/user/list', to: 'users#tablet'
+
+  root to: '/item/list', to: 'items#list'
 end
