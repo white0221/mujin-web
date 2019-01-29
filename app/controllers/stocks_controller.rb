@@ -37,7 +37,7 @@ class StocksController < ApplicationController
 
     stock = Stock.find(params[:data])
     stock.item_id = params[:stock][:item_id]
-    stock.quantity = params[:stock][:quantity]
+    stock.volume = params[:stock][:volume]
 
     response_json = {}
     if stock.save
@@ -51,13 +51,13 @@ class StocksController < ApplicationController
 
   def upgrade_for_api
     if !params[:id]
-      response_json["error"] = "invalid quantity update"
+      response_json["error"] = "invalid volume update"
 
       render json: response_json, status: :bad_request
     end
 
     stock = Stock.find(params[:id])
-    stock.quantity = params[:stock][:quantity]
+    stock.volume = params[:stock][:volume]
 
     response_json = {}
     if stock.save
@@ -65,7 +65,7 @@ class StocksController < ApplicationController
 
       render json: response_json, status: :accepted
     else
-      response_json["error"] = "invalid quantity update"
+      response_json["error"] = "invalid volume update"
 
       render json: response_json, status: :bad_request
     end
@@ -84,11 +84,11 @@ class StocksController < ApplicationController
 
   private
     def stock_params
-      params.require(:stock).permit(:item_id, :quantity)
+      params.require(:stock).permit(:item_id, :volume)
     end
 
     def stock_params_for_update
-      params.require(:stock).permit(:quantity)
+      params.require(:stock).permit(:volume)
     end
 
   protect_from_forgery :except => [:create]

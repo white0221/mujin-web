@@ -2,7 +2,7 @@
 <table>
     <tr>
       <th>Item Name</th>
-      <th>Quantity</th>
+      <th>Volume</th>
       <% if current_user.admin_flag? %>
       <th></th>
       <% end %>
@@ -10,7 +10,7 @@
     <% @stocks.each do |stock| %>
         <tr>
             <td><%= Item.find(stock.item_id)[:name] %></td>
-            <td><%= stock.quantity %></td>
+            <td><%= stock.volume %></td>
             <td><%= link_to 'update', { :controller => :stocks, :action => :update, :id => stock.id } %></td>
         </tr>
     <% end %>
