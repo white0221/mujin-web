@@ -68,7 +68,7 @@ class HistoriesController < ApplicationController
     end
 
     def history_details_params
-      params.require(:history).permit(history_details: [:item_id, :quantity])
+      params.require(:history).permit(history_details: [:item_id, :volume])
     end
 
     protect_from_forgery :except => [:create]
