@@ -9,9 +9,17 @@
     </tr>
     <% @stocks.each do |stock| %>
         <tr>
-            <td><%= Item.find(stock.item_id)[:name] %></td>
-            <td><%= stock.volume %></td>
-            <td><%= link_to 'update', { :controller => :stocks, :action => :update, :id => stock.id } %></td>
+          <td style='width:200px;'>
+            <div style='width:200px; overflow-x:scroll;'>
+              <%= Item.find(stock.item_id)[:name] %>
+            </div>
+          </td>
+          <td style='width:200px;'>
+            <div style='width:200px; overflow-x:scroll;'>
+              <%= stock.volume %>
+            </div>
+          </td>
+          <td><%= link_to 'update', { :controller => :stocks, :action => :update, :id => stock.id } %></td>
         </tr>
     <% end %>
 </table>
