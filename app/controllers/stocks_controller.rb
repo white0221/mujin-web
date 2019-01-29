@@ -32,11 +32,11 @@ class StocksController < ApplicationController
   def upgrade
     if !params[:data]
       flash[:danger] = "入力エラー"
-      redirect_to "/stock/update"
+      redirect_to "/stock/update", id: stock.id
     end
 
     stock = Stock.find(params[:data])
-    stock.item_id = params[:stock][:item_id]
+    #stock.item_id = params[:stock][:item_id]
     stock.volume = params[:stock][:volume]
 
     response_json = {}
@@ -45,7 +45,7 @@ class StocksController < ApplicationController
       redirect_to "/stock/list"
     else
       flash[:danger] = "入力エラー"
-      redirect_to "/stock/update"
+      redirect_to "/stock/update", id: stock.id
     end
   end
 
