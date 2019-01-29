@@ -4,6 +4,9 @@
 <% end %>
 <table>
   <tr>
+    <% if current_user.admin_flag? %>
+    <th>ArUco ID</th>
+    <% end %>
     <th>Name</th>
     <th>Value</th>
     <% if current_user.admin_flag? %>
@@ -13,6 +16,11 @@
   </tr>
   <% @items.each do |item| %>
     <tr>
+      <td style="width:100px;">
+        <div style="width:100px; overflow-x:scroll;">
+          <%= item.id %>
+        </div>
+      </td>
       <td style="width:200px;">
         <div style="width:200px; overflow-x:scroll;">
           <%= item.name %>
