@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_120900) do
 
   create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "quantity"
+    t.integer "volume"
     t.boolean "response_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_120900) do
   create_table "history_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "history_id"
     t.bigint "item_id"
-    t.integer "quantity"
+    t.integer "volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["history_id"], name: "index_history_details_on_history_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_120900) do
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
-    t.integer "quantity"
+    t.integer "volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_stocks_on_item_id"
