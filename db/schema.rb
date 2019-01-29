@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 2019_01_23_120900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "markers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
     t.integer "quantity"

@@ -1,0 +1,9 @@
+<h1>Add</h1>
+<div>
+    <%= form_with model: @marker, url: "/marker/add" do |f| %>
+        <%= f.label "url", "画像URL" %>
+        <%= f.text_field :url, id: :title_url %><br>
+        <%= f.submit "送信" %>
+    <% end %>
+</div>
+

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   patch '/item/update', to: 'items#upgrade'
   delete '/item/delete', to: 'items#destroy'
 
+  get '/marker/list', to: 'markers#list'
+  get '/marker/add', to: 'markers#new'
+  post '/marker/add', to: 'markers#create'
+  
   get '/history', to: 'histories#read'
   get '/history/list', to: 'histories#list'
   post '/history', to: 'histories#create'
