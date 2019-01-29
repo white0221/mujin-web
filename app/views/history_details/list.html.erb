@@ -1,0 +1,27 @@
+<h1>History Details List</h1>
+<table>
+  <tr>
+    <th>History ID</th>
+    <th>Item Name</th>
+    <th>Volume</th>
+  </tr>
+  <% @history_details.each do |history_detail| %>
+    <tr>
+      <td style="width:200px;">
+        <div style="width:200px;">
+          <%= history_detail.history_id %>
+        </div>
+      </td>
+      <td style="width:200px;">
+        <div style="width:200px; overflow-x:scroll;">
+          <%= Item.find(history_detail.item_id)[:name] %>
+        </div>
+      </td>
+      <td style="width:200px;">
+        <div style="width:200px; overflow-x:scroll;">
+          <%= history_detail.volume %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,25 @@
+<h1>History List</h1>
+<table>
+  <tr>
+    <th>User Name</th>
+    <th>Date</th>
+    <th></th>
+  </tr>
+  <% @histories.each do |history| %>
+    <tr>
+      <td style='width:200px;'>
+        <div style='width:200px; overflow-x:scroll;'>
+          <%= User.find(history.user_id)[:user_name] %>
+        </div>
+      </td>
+      <td style='width:300px;'>
+        <div style='width:300px;'>
+          <%= history.created_at.in_time_zone('Tokyo') %>
+        </div>
+      </td>
+      <td>
+        <%= link_to 'Detail', history_detail_list_path('history_id': history.id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
