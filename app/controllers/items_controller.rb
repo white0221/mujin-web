@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
       created_item_id = @item["id"]
       stock_init_params = {
         "item_id": created_item_id,
-                           "quantity": 0
+                           "volume": 0
       }
       @stock = Stock.new(stock_init_params)
       @stock.save
