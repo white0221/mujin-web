@@ -6,8 +6,10 @@
   <tr>
     <th>Name</th>
     <th>Value</th>
+    <% if current_user.admin_flag? %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
   <% @items.each do |item| %>
     <tr>
@@ -21,8 +23,10 @@
           <%= item.value %>
         </div>
       </td>
+      <% if current_user.admin_flag? %>
       <td><%= link_to 'update', { :controller => :items, :action => :update, :id => item.id } %></td>
       <td><%= link_to 'delete', { :controller => :items, :action => :delete, :id => item.id } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

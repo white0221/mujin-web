@@ -1,6 +1,8 @@
 # coding: utf-8
 class StocksController < ApplicationController
-  before_action :signed_in_user
+  before_action :signed_in_user, only: [:list, :add]
+  before_action :admin_user, only: [:upgrade, :update]
+
   def new
     @stock = Stock.new
   end
