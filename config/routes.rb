@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   post '/history_detail', to: 'history_details#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	get '/tablet/user/list', to: 'users#tablet'
+
+  root to: '/item/list', to: 'items#list'
 end
